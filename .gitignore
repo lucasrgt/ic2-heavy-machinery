@@ -1,0 +1,23 @@
+# RetroMCP ecosystem (decompiled MC, binaries, build output)
+mcp/
+
+# Dependencies (binary mod/lib archives)
+deps/
+
+# Temp/staging
+temp/
+temp_build/
+
+# Test artifacts
+tests/data/
+tests/out/
+
+# Node
+node_modules/
+
+# Config (runtime generated)
+config/
+
+# Build artifacts
+options.cfg
+RetroMCP-Java-CLI.jar
