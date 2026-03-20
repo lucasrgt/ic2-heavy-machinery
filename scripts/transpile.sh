@@ -4,7 +4,7 @@
 set -e
 BASE="$(cd "$(dirname "$0")/.." && pwd)"
 SRC="$BASE/src/ic2heavymachinery"
-LIBS="$BASE/../../libraries"
+LIBS="$BASE/../../../libraries"
 DEST="$BASE/mcp/minecraft/src/net/minecraft/src"
 
 # Remove old transpiled mod files (only IC2HM_ prefixed + Aero_ prefixed + mod_IC2HeavyMachinery)

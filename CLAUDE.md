@@ -38,7 +38,7 @@
   - `assets/models/` — 3D models (.obj, .anim.json)
   - `mod_IC2HeavyMachinery.java` — main mod class (package root)
 - **Transpiled output (don't edit):** `mcp/minecraft/src/net/minecraft/src/`
-- **Libraries:** `../../libraries/` (modellib + machineapi, shared across workspace)
+- **Libraries:** `../../../libraries/` (modellib + machineapi, shared across workspace)
 - **Scripts:** `scripts/` (setup.sh, test.sh, test_unit.sh, transpile.sh)
 - **Tests:** `tests/` (data/, libs/, out/, src/)
 - **Tools:** `tools/` (gen-atlas.js)
@@ -52,7 +52,7 @@
 ## Dependencies
 - IC2 v1.00 (in `mcp/deps/ic2.zip`)
 - ModLoader + ModLoaderMP + Forge 1.0.6 (in `mcp/deps/`)
-- AeroModelLib + AeroMachineAPI (in `../../libraries/`)
+- AeroModelLib + AeroMachineAPI (in `../../../libraries/`)
 - LWJGL runtime libraries (in `mcp/libraries/`)
 
 ## Texture Atlas
