@@ -28,13 +28,23 @@ transpile_file() {
         "$file" > "$DEST/$filename"
 }
 
-# Transpile libraries (aero modellib, machineapi, etc.)
+# Transpile libraries (aero modellib, machineapi, devtools)
 LIB_COUNT=0
 if [ -d "$LIBS" ]; then
-    find "$LIBS" -name "*.java" | while read -r file; do
-        transpile_file "$file"
-    done
-    LIB_COUNT=$(find "$LIBS" -name '*.java' | wc -l)
+    if [ "$AERO_RELEASE" = "1" ]; then
+        find "$LIBS" -name "*.java" -not -path "*/devtools/*" | while read -r file; do
+            transpile_file "$file"
+        done
+        LIB_COUNT=$(find "$LIBS" -name '*.java' -not -path "*/devtools/*" | wc -l)
+        # Defense in depth: remove any devtools that leaked
+        find "$DEST" -maxdepth 1 -name "Aero_Dev*.java" -delete 2>/dev/null || true
+        echo "[RELEASE] Excluded devtools from transpile"
+    else
+        find "$LIBS" -name "*.java" | while read -r file; do
+            transpile_file "$file"
+        done
+        LIB_COUNT=$(find "$LIBS" -name '*.java' | wc -l)
+    fi
 fi
 
 # Transpile mod source
