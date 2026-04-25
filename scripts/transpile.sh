@@ -32,19 +32,19 @@ transpile_file() {
 LIB_COUNT=0
 if [ -d "$LIBS" ]; then
     if [ "$AERO_RELEASE" = "1" ]; then
-        find "$LIBS" -name "*.java" -not -path "*/devtools/*" -not -path "*/modellib/stationapi/*" -not -path "*/modellib/tests/*" | while read -r file; do
+        find "$LIBS" -name "*.java" -not -path "*/devtools/*" -not -path "*/modellib/stationapi/*" -not -path "*/modellib/modloader/tests/*" | while read -r file; do
             transpile_file "$file"
         done
-        LIB_COUNT=$(find "$LIBS" -name '*.java' -not -path "*/devtools/*" -not -path "*/modellib/stationapi/*" -not -path "*/modellib/tests/*" | wc -l)
+        LIB_COUNT=$(find "$LIBS" -name '*.java' -not -path "*/devtools/*" -not -path "*/modellib/stationapi/*" -not -path "*/modellib/modloader/tests/*" | wc -l)
         # Defense in depth: remove any devtools that leaked
         find "$DEST" -maxdepth 1 -name "Aero_Dev*.java" -delete 2>/dev/null || true
         echo "[RELEASE] Excluded devtools from transpile"
     else
         # Exclude devtools/tools/ (standalone JDI tools) and modellib/stationapi/ (Fabric subproject)
-        find "$LIBS" -name "*.java" -not -path "*/devtools/tools/*" -not -path "*/modellib/stationapi/*" -not -path "*/modellib/tests/*" | while read -r file; do
+        find "$LIBS" -name "*.java" -not -path "*/devtools/tools/*" -not -path "*/modellib/stationapi/*" -not -path "*/modellib/modloader/tests/*" | while read -r file; do
             transpile_file "$file"
         done
-        LIB_COUNT=$(find "$LIBS" -name '*.java' -not -path "*/devtools/tools/*" -not -path "*/modellib/stationapi/*" -not -path "*/modellib/tests/*" | wc -l)
+        LIB_COUNT=$(find "$LIBS" -name '*.java' -not -path "*/devtools/tools/*" -not -path "*/modellib/stationapi/*" -not -path "*/modellib/modloader/tests/*" | wc -l)
     fi
 fi
 
